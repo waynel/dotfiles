@@ -44,3 +44,6 @@ _load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# docker env
+eval "$(docker-machine env default)"

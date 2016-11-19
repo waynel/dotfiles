@@ -17,3 +17,14 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+# Personal aliases below here
+alias cdf='cd ~/dotfiles/'
+
+# Docker
+alias dm="docker-machine"
+alias dc="docker-compose"
+
+# Kubernetes
+alias kc="kubectl --kubeconfig=/Users/wayneliu/workspace/config/DevKube/kubeconfig"
+alias ka="kc --namespace=admintools"
