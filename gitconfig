@@ -12,11 +12,16 @@
   co = checkout
   pf = push --force-with-lease
   st = status
+
+  br = branch
+  poh = push origin HEAD
+  pretty = log --graph --pretty=format:'%Cred%h%Creset - %Cgreen%cn%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  rhh = reset --hard HEAD
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
-  ff = only
+ # ff = only
 [commit]
   template = ~/.gitmessage
 [fetch]
