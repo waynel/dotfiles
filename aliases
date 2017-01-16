@@ -24,6 +24,10 @@ alias cdf='cd ~/dotfiles/'
 # Docker
 alias dm="docker-machine"
 alias dc="docker-compose"
+alias docker-clean="drmc;drmv;drmi"
+alias drmc="docker rm \$(docker ps -qa --no-trunc --filter 'status=exited')"
+alias drmv="docker volume rm \$(docker volume ls -qf dangling=true)"
+alias drmi="docker rmi \$(docker images | grep '^<none>' | awk '{print $3}')"
 
 # Kubernetes
 alias kc="kubectl --kubeconfig=/Users/wayneliu/workspace/config/DevKube/kubeconfig"
