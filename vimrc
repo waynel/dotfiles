@@ -154,3 +154,11 @@ set diffopt+=vertical
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" Personal config below here
+
+" Use system clipboard as the default register
+set clipboard=unnamed
+
+" Color scheme
+" colorscheme github
