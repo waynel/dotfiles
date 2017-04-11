@@ -55,6 +55,7 @@ Plug 'nvie/vim-flake8'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

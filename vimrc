@@ -200,6 +200,10 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 " add NERDTree shortcut, config to open automatically on startup
- map <bar> :NERDTreeToggle<CR>
- autocmd vimenter * NERDTree
+map <bar> :NERDTreeToggle<CR>
+autocmd VimEnter * NERDTree | wincmd p
+
+" add Tagbar shortcut
+nmap <F8> :TagbarToggle<CR>
+autocmd VimEnter * nested :TagbarOpen
 
