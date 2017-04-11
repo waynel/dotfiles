@@ -54,6 +54,7 @@ Plug 'nvie/vim-flake8'
 " Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'flazz/vim-colorschemes'
+Plug 'scrooloose/nerdtree'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

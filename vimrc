@@ -199,4 +199,7 @@ if 'VIRTUAL_ENV' in os.environ:
   execfile(activate_this, dict(__file__=activate_this))
 EOF
 
+" add NERDTree shortcut, config to open automatically on startup
+ map <bar> :NERDTreeToggle<CR>
+ autocmd vimenter * NERDTree
 
