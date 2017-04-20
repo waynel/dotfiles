@@ -57,7 +57,7 @@ set shiftround
 set expandtab
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+" set list listchars=tab:»·,trail:·,nbsp:·
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -82,6 +82,10 @@ endif
 " Make it obvious where 120 characters is
 set textwidth=120
 set colorcolumn=+1
+
+" highlight current line and column
+" set cursorline
+" set cursorcolumn
 
 " Numbers
 set number
@@ -155,15 +159,19 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-" Personal config below here
+" personal config below here
+""""""""""""""""""""""""""""
 
-" Use system clipboard as the default register
+" use system clipboard as the default register
 " set clipboard=unnamed
 
-" Color scheme
+" color scheme
 colorscheme Tomorrow-Night-Eighties
 
-" Add PEP8 standards for Python
+" highlight all search matches
+set hlsearch
+
+" add PEP8 standards for Python
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -173,10 +181,10 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix |
 
-"define BadWhitespace before using in a match
+" define BadWhitespace before using in a match
 highlight BadWhitespace ctermbg=red guibg=darkred
 
-" Flag unnecessary whitespace
+" flag unnecessary whitespace
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " use UTF8, especially when working with Python
@@ -206,4 +214,28 @@ autocmd VimEnter * NERDTree | wincmd p
 " add Tagbar shortcut
 nmap <F8> :TagbarToggle<CR>
 autocmd VimEnter * nested :TagbarOpen
+" always push quickfix window to the bottom
+autocmd FileType qf wincmd J
 
+" paste without explicitly turning paste mode on/off 
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
