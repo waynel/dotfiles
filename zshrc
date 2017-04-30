@@ -39,11 +39,11 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
-
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # docker env
 eval "$(docker-machine env default)"
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
