@@ -57,6 +57,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 " Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'tpope/vim-unimpaired'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
