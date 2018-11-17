@@ -79,6 +79,10 @@ if executable('ag')
   endif
 endif
 
+" save automatically when text is changed
+set updatetime=200
+au CursorHold * silent! update
+
 " Make it obvious where 120 characters is
 set textwidth=120
 set colorcolumn=+1
