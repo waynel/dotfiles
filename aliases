@@ -24,11 +24,49 @@ alias cdf='cd ~/dotfiles/'
 # Docker
 alias dm="docker-machine"
 alias dc="docker-compose"
-alias docker-clean="drmc;drmv;drmi"
+
 alias drmc="docker rm \$(docker ps -qa --no-trunc --filter 'status=exited')"
 alias drmv="docker volume rm \$(docker volume ls -qf dangling=true)"
 alias drmi="docker rmi \$(docker images | grep '^<none>' | awk '{print $3}')"
+alias docker-clean="drmc;drmv;drmi"
 
 # Kubernetes
-alias kc="kubectl --kubeconfig=/Users/wayneliu/workspace/config/DevKube/kubeconfig"
-alias ka="kc --namespace=admintools"
+alias kc="kubectl --kubeconfig=/Users/wayneliu/workspace/config/DevKube/kubectl-config"
+alias ka="kc --namespace=default"
+
+# JSON pretty print
+alias pretty="python3 -m json.tool"
+
+# set python's default version to 3
+# alias python='python3'
+
+# cat for bat
+alias cat=bat
+
+# git
+alias gr="git remote -v"
+alias gpullum="git pull upstream master"
+alias gpullom="git pull origin master"
+
+alias gcob="git checkout -b"
+
+alias ga="git add"
+alias gc="git commit -m"
+alias gpoh="git push origin HEAD"
+alias gpohf="git push origin HEAD --force"
+alias gpom="git push origin master"
+alias gacam="git add . && git commit --amend --reuse-message=HEAD"
+alias gcam="git commit --amend --reuse-message=HEAD"
+alias gcampohf="git commit --amend --reuse-message=HEAD && git push origin HEAD --force"
+
+# see gitconfig for cp and acp aliases
+alias gcp="git cp"
+alias gacp="git acp"
+
+# tig
+alias g="tig"
+alias gs="tig status"
+alias gl="tig log"
+alias gd="git icdiff"
+alias gdt="git diff | tig"
+alias gdc="git diff --cached | tig"

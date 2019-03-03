@@ -17,9 +17,13 @@
   poh = push origin HEAD
   pretty = log --graph --pretty=format:'%Cred%h%Creset - %Cgreen%cn%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   rhh = reset --hard HEAD
+
+  cp = "!f() { git commit -m \"$1\" && git push origin HEAD ; }; f"
+  acp = "!f() { git add . && git commit -m \"$1\" && git push origin HEAD ; }; f"
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
+  hooksPath = /Users/wayneliu/workspace/nta/.git/hooks
 [merge]
  # ff = only
 [commit]
@@ -30,3 +34,18 @@
   autosquash = true
 [include]
   path = ~/.gitconfig.local
+[merge]
+  tool = opendiff
+[diff]
+  tool = icdiff
+[difftool]
+  prompt = false
+[difftool "icdiff"]
+  cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[url "git@github.com:"]
+  insteadOf = https://github.com/
