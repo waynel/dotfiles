@@ -42,8 +42,28 @@ _load_settings "$HOME/.zsh/configs"
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-# docker env
-eval "$(docker-machine env default)"
-
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# docker env
+eval $(docker-machine env default)
+
+# kube config env var
+export KUBECONFIG=/Users/wayneliu/workspace/config/DevKube/kubeconfig
+
+# tiny care terminal env vars
+export TTC_BOTS='tinycarebot,selfcare_bot,magicrealismbot'
+export TTC_REPOS='~/workspace'
+export TTC_WEATHER='New York, NY'
+export TTC_CELSIUS=false
+export TTC_APIKEYS=false
+export TTC_UPDATE_INTERVAL=20
+
+# for golang
+export GOPATH=$HOME/workspace/go
+export PATH=$PATH:$GOPATH/bin
+
+# for platform
+export PLATFORM=~/workspace/platform
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
