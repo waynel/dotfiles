@@ -45,8 +45,8 @@ _load_settings "$HOME/.zsh/configs"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-# docker env
-eval $(docker-machine env default)
+# # docker env
+# eval $(docker-machine env default)
 
 # kube config env var
 export KUBECONFIG=/Users/wayneliu/workspace/config/DevKube/kubeconfig
@@ -67,3 +67,13 @@ export PATH=$PATH:$GOPATH/bin
 export PLATFORM=~/workspace/platform
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# for heroku autocomplete
+printf "$(heroku autocomplete:script zsh)"
+
+# for android development
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
